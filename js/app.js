@@ -81,6 +81,26 @@ allEnemies.push(new Enemy(0,145,120));
 allEnemies.push(new Enemy(0,230,120));
 var player = new Player();
 
+function addEnemy()
+{
+    //console.log(Math.floor(Math.random()*3));
+    var newY = Math.floor(Math.random()*3)*85 + 60;
+    var newSpeed = Math.floor(Math.random()*250)+100;
+    allEnemies.push(new Enemy(0,newY,newSpeed));
+}
+function delEnemy()
+{
+    while(allEnemies.length > 0){
+        if (allEnemies[0].x > 500) {
+            allEnemies.shift();
+        }
+        else{
+            break;
+        }
+    }
+}
+setInterval("addEnemy()","900");
+setInterval("delEnemy()","10000");
 
 function clash(p,e){
     if (p.y == e.y) 
